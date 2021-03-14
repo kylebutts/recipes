@@ -27,7 +27,7 @@
 
 - 3 tablespoons sugar
 
-- 2 tablespoons chopped nuts
+- 2 tablespoons chopped nuts 
 
 - 1/2 teaspoon ground cinnamon
 
