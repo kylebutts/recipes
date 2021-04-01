@@ -41,3 +41,6 @@
 - Add heavy cream, fenugreek leaves and chicken. Stir to combine.
 
 - Serve hot with basmati rice.
+
+
+Notes: https://www.tiffin.com/blog/tiffin-recipes/Indian-Food-Elkins-Park-Recipe-Blog-5-Tiffin-Mt-Airy.html
