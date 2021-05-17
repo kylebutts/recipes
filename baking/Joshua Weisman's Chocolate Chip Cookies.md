@@ -34,6 +34,6 @@
 
 6. Preheat oven to 180C, line tray with baking paper and scoop mixture onto tray.
 
-7. For **Large—** bake for 12-15 minutes; for **small--** bake for 8-10 minutes.
+7. For *Large—* bake for 12-15 minutes; for *small—* bake for 8-10 minutes.
 
     1. Pan Drop at 6 minutes, and 2-3 minutes after that

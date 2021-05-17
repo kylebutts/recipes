@@ -35,12 +35,11 @@
 
 **Directions:**
 
+1. Preheat oven to 400°. In a large bowl, combine flour, brown sugar, baking powder and salt. In another bowl, combine milk, butter, syrup, sour cream, egg and vanilla. Stir into dry ingredients just until moistened.
 
-- Preheat oven to 400°. In a large bowl, combine flour, brown sugar, baking powder and salt. In another bowl, combine milk, butter, syrup, sour cream, egg and vanilla. Stir into dry ingredients just until moistened.
+2. Fill greased or paper-lined muffin cups two-thirds full. For topping, combine flour, sugar, nuts and cinnamon; cut in butter until crumbly. Sprinkle over batter.
 
-- Fill greased or paper-lined muffin cups two-thirds full. For topping, combine flour, sugar, nuts and cinnamon; cut in butter until crumbly. Sprinkle over batter.
-
-- Bake 16-20 minutes or until a toothpick inserted in center comes out clean. Cool 5 minutes before removing from pans to wire racks. Serve warm. 
+3. Bake 16-20 minutes or until a toothpick inserted in center comes out clean. Cool 5 minutes before removing from pans to wire racks. Serve warm. 
 
 
 

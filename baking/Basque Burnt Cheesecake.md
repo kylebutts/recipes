@@ -20,14 +20,14 @@
 
 **Directions:**
 
-- Place a rack in middle of oven; preheat to 400°. Butter pan, then line with 2 overlapping 16x12" sheets of parchment, making sure parchment comes at least 2" above top of pan on all sides. Because the parchment needs to be pleated and creased in some areas to fit in pan, you won’t end up with a clean, smooth outer edge to the cake; that’s okay! Place pan on a rimmed baking sheet.
+1. Place a rack in middle of oven; preheat to 400°. Butter pan, then line with 2 overlapping 16x12" sheets of parchment, making sure parchment comes at least 2" above top of pan on all sides. Because the parchment needs to be pleated and creased in some areas to fit in pan, you won’t end up with a clean, smooth outer edge to the cake; that’s okay! Place pan on a rimmed baking sheet.
 
-- Beat cream cheese and sugar in the bowl of a stand mixer fitted with the paddle attachment on medium-low speed, scraping down sides of bowl, until very smooth, no lumps remain, and sugar has dissolved, about 2 minutes.
+2. Beat cream cheese and sugar in the bowl of a stand mixer fitted with the paddle attachment on medium-low speed, scraping down sides of bowl, until very smooth, no lumps remain, and sugar has dissolved, about 2 minutes.
 
-- Increase speed to medium and add eggs one at a time, beating each egg 15 seconds before adding the next. Scrape down sides of bowl, then reduce mixer speed to medium-low. Add cream, salt, and vanilla and beat until combined, about 30 seconds.
+3. Increase speed to medium and add eggs one at a time, beating each egg 15 seconds before adding the next. Scrape down sides of bowl, then reduce mixer speed to medium-low. Add cream, salt, and vanilla and beat until combined, about 30 seconds.
 
-- Turn off mixer and sift flour evenly over cream cheese mixture. Beat on low speed until incorporated, about 15 seconds. Scrape down sides of bowl (yet again) and continue to beat until batter is very smooth, homogenous, and silky, about 10 seconds.
+4. Turn off mixer and sift flour evenly over cream cheese mixture. Beat on low speed until incorporated, about 15 seconds. Scrape down sides of bowl (yet again) and continue to beat until batter is very smooth, homogenous, and silky, about 10 seconds.
 
-- Pour batter into prepared pan. Bake cheesecake until deeply golden brown on top and still very jiggly in the center, 60–65 minutes.
+5. Pour batter into prepared pan. Bake cheesecake until deeply golden brown on top and still very jiggly in the center, 60–65 minutes.
 
-- Let cool slightly (it will fall drastically as it cools), then unmold. Let cool completely. Carefully peel away parchment from sides of cheesecake. Slice into wedges and serve at room temperature, preferably with a glass of sherry alongside.
+6. Let cool slightly (it will fall drastically as it cools), then unmold. Let cool completely. Carefully peel away parchment from sides of cheesecake. Slice into wedges and serve at room temperature, preferably with a glass of sherry alongside.

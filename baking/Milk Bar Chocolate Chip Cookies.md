@@ -24,21 +24,19 @@
 
 **Directions:**
 
+1. In a large bowl, mix together the melted butter and sugars with a wooden spoon until mixture is combined and homogenous. (follow advice below)
 
+2. Add the egg and vanilla, stirring until combined.
 
-- In a large bowl, mix together the melted butter and sugars with a wooden spoon until mixture is combined and homogenous. (follow advice below)
+3. Mix in the flour, milk powder, salt, baking powder, and baking soda until just combined – don’t overmix!
 
-- Add the egg and vanilla, stirring until combined.
+4. Fold in the chocolate pieces or chocolate chips. The dough might seem a bit wet but it baked up nicely.
 
-- Mix in the flour, milk powder, salt, baking powder, and baking soda until just combined – don’t overmix!
+5. Put in fridge for 1 hour.
 
-- Fold in the chocolate pieces or chocolate chips. The dough might seem a bit wet but it baked up nicely.
+6. Preheat oven to 375 degrees. Prep baking sheets with parchment paper.
 
-- Put in fridge for 1 hour.
-
-- Preheat oven to 375 degrees. Prep baking sheets with parchment paper.
-
-- Dole out the cookie batter using a 2 ¾ ounce ice cream scoop, or use your hands. Keep the balls 2 to 3 inches apart! Bake for 10 to 12 minutes, until golden brown. Cool completely on the pan (if you can wait that long to chow on them).
+7. Dole out the cookie batter using a 2 ¾ ounce ice cream scoop, or use your hands. Keep the balls 2 to 3 inches apart! Bake for 10 to 12 minutes, until golden brown. Cool completely on the pan (if you can wait that long to chow on them).
 
 
 
