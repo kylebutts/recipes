@@ -12,6 +12,8 @@
 ,{"category": "Korean Food", "recipes": [{"image":"cheesebuldak.jpg","time":"1 hour","size":"2-3 servings","category":"Korean Food","favorite":"x","author":"Maangchi","source":"https://www.youtube.com/watch?v=T9uI1-6Ac6A","title":"Cheese Buldak","spicy":"x","htmlfile":"cheese_buldak.html","original_title":"치즈불닭","description":"Super-spicy chicken tempered with loads of cheese and fresh spring onions. Serve with rice and a light salad – or, better yet, an assortment of side dishes."}
 ,{"image":"","time":"1 hour","size":"4 servings","category":"Korean Food","favorite":"","author":"Carol","source":"https://www.fromachefskitchen.com/korean-braised-chicken-thighs/#mv-creation-276-jtr","title":"Korean Braised Chicken Thigh","spicy":"x","htmlfile":"korean_braised_chicken_thigh.html","original_title":"","description":""}
 ]}
+,{"category": "Mediterranean Food", "recipes": [{"image":"chicken_skewers.jpg","time":"1 hour + marinade","size":"4 servings","category":"Mediterranean Food","sweet":"","favorite":"","author":"Clare de Boer","source":"https://cooking.nytimes.com/recipes/1021082-grilled-chicken-skewers-with-tarragon-and-yogurt","title":"Grilled Chicken Skewers With Tarragon and Yogurt","spicy":"","htmlfile":"chicken_skewers.html","description":""}
+]}
 ,{"category": "Thai Food", "recipes": [{"image":"","time":"40 minutes","size":"4 servings","category":"Thai Food","sweet":"","favorite":"","veggie":"x","author":"Cookie &amp; Kate","source":"https://cookieandkate.com/thai-red-curry-recipe/","title":"Veggie Thai Red Curry","spicy":"","htmlfile":"veggie_thai_red_curry.html","description":""}
 ]}
 ]}
