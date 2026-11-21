@@ -1,0 +1,29 @@
+---
+import { getUniqueRecipes, recipeNumber, recipeUrl } from "../lib/recipes"
+
+export async function getStaticPaths() {
+	const recipes = await getUniqueRecipes()
+	return recipes.map((recipe) => ({
+		params: { number: recipeNumber(recipe.data.number) },
+		props: { href: recipeUrl(recipe.id) },
+	}))
+}
+
+const { href } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Redirecting to recipe…</title>
+		<link rel="canonical" href={href} />
+		<meta http-equiv="refresh" content={`0; url=${href}`} />
+	</head>
+	<body>
+		<p>
+			<a href={href}>Go to recipe ↗</a>
+		</p>
+	</body>
+</html>

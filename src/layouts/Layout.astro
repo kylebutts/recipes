@@ -1,0 +1,106 @@
+---
+import "@fontsource/jetbrains-mono/400.css"
+import "@fontsource/jetbrains-mono/700.css"
+import "../styles/global.css"
+interface Props {
+	title?: string
+	description?: string
+	index?: boolean
+}
+const {
+	title = "Kyle Butts' Cookbook",
+	description = "Recipes to share with my friends.",
+	index = false,
+} = Astro.props
+const home = import.meta.env.BASE_URL
+const themes = ["magenta", "blue", "green", "purple"]
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="icon" href={`${home}favicon.png`} />
+		<script is:inline>
+			try {
+				const theme = localStorage.getItem("recipe-theme")
+				if (theme) document.documentElement.dataset.theme = theme
+			} catch {
+				/* Storage is optional. */
+			}
+		</script>
+	</head>
+	<body>
+		<a href="#main" class="skip-link">
+			Skip to content
+		</a>
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="brand" href={home}>
+					Kyle's cookbook<span class="cursor">_</span>
+				</a>
+				<div class="header-actions">
+					<!-- {!index && (
+						<a class="header-link" href={home}>
+							[RECIPE INDEX]
+						</a>
+					)} -->
+					<div
+						class="theme-picker no-print"
+						role="group"
+						aria-label="Accent color"
+					>
+						{themes.map((theme) => (
+							<button
+								type="button"
+								class="theme-swatch"
+								data-theme-color={theme}
+								aria-label={`${theme} accent`}
+								aria-pressed={theme === "magenta" ? "true" : "false"}
+								style={`--swatch: var(--kyle-${theme})`}
+							/>
+						))}
+					</div>
+				</div>
+			</div>
+		</header>
+		<main id="main">
+			<slot />
+		</main>
+		<script>
+			const swatches = [
+				...document.querySelectorAll<HTMLButtonElement>(".theme-swatch"),
+			]
+			function setTheme(theme: string) {
+				document.documentElement.dataset.theme = theme
+				swatches.forEach((swatch) =>
+					swatch.setAttribute(
+						"aria-pressed",
+						String(swatch.dataset.themeColor === theme),
+					),
+				)
+			}
+			let stored: string | null = null
+			try {
+				stored = localStorage.getItem("recipe-theme")
+			} catch {
+				/* Storage is optional. */
+			}
+			setTheme(stored ?? document.documentElement.dataset.theme ?? "magenta")
+			swatches.forEach((swatch) =>
+				swatch.addEventListener("click", () => {
+					const theme = swatch.dataset.themeColor!
+					setTheme(theme)
+					try {
+						localStorage.setItem("recipe-theme", theme)
+					} catch {
+						/* Storage is optional. */
+					}
+				}),
+			)
+		</script>
+	</body>
+</html>

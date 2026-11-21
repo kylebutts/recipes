@@ -1,0 +1,157 @@
+---
+import { getCollection, render } from "astro:content"
+import Layout from "../layouts/Layout.astro"
+export async function getStaticPaths() {
+	return (await getCollection("recipes")).map((recipe) => ({
+		params: { id: recipe.id },
+		props: { recipe },
+	}))
+}
+const { recipe } = Astro.props
+const { data } = recipe
+const { Content } = await render(recipe)
+---
+
+<Layout
+	title={`${data.title} | Kyle's cookbook`}
+	description={data.description || `${data.title} from Kyle Butts' cookbook.`}
+>
+	<nav class="recipe-toolbar no-print" aria-label="Recipe tools">
+		<a class="button" href={import.meta.env.BASE_URL}>
+			&lt;-- BACK TO INDEX
+		</a>
+		<div>
+			<button id="print">[PRINT RECIPE]</button>
+			<button id="copy">[COPY PLAIN TEXT]</button>
+		</div>
+	</nav>
+	<article class="recipe-sheet" id="recipe">
+		<header class="recipe-heading">
+			<div>
+				<h1>{data.title}</h1>
+				{data.original_title && <p>{data.original_title}</p>}
+				{data.description && <p class="description">{data.description}</p>}
+			</div>
+			<dl class="recipe-facts">
+				<div>
+					<dt>TIME</dt>
+					<dd>{data.time}</dd>
+				</div>
+				<div>
+					<dt>YIELD</dt>
+					<dd>{data.size ?? "Not specified"}</dd>
+				</div>
+			</dl>
+		</header>
+		<Content />
+		{data.image && (
+			<details class="recipe-photo no-print">
+				<summary>[VIEW RECIPE PHOTO]</summary>
+				<img
+					src={`${import.meta.env.BASE_URL}images/${data.image}`}
+					alt={data.title}
+					loading="lazy"
+				/>
+			</details>
+		)}
+		{data.source && (
+			<p class="source">
+				Source: <a href={data.source}>{data.author || "Original recipe"} ↗</a>
+			</p>
+		)}
+	</article>
+	<p id="copy-status" role="status" class="no-print"></p>
+	<script>
+		document
+			.querySelector("#print")
+			?.addEventListener("click", () => window.print())
+		document.querySelector("#copy")?.addEventListener("click", async () => {
+			const status = document.querySelector("#copy-status")!
+			try {
+				await navigator.clipboard.writeText(
+					document.querySelector<HTMLElement>("#recipe")!.innerText,
+				)
+				status.textContent = "Recipe copied."
+			} catch {
+				status.textContent =
+					"Copy is unavailable. Select the recipe text to copy it."
+			}
+		})
+		document
+			.querySelectorAll<HTMLElement>(".instructions")
+			.forEach((instructions) => {
+				const steps = [
+					...instructions.querySelectorAll<HTMLElement>(".recipe-step"),
+				]
+				if (!steps.length) return
+
+				const heading = instructions.querySelector("h2")
+				if (heading) {
+					const header = document.createElement("div")
+					header.className = "instructions-header"
+					const hint = document.createElement("span")
+					hint.className = "instructions-hint no-print"
+					hint.textContent = "Click step to mark completed"
+					heading.before(header)
+					header.append(heading, hint)
+				}
+
+				const footer = document.createElement("div")
+				footer.className = "checklist-footer no-print"
+				const progress = document.createElement("span")
+				progress.setAttribute("role", "status")
+				const reset = document.createElement("button")
+				reset.type = "button"
+				reset.textContent = "[RESET CHECKLIST]"
+				footer.append(progress, reset)
+				instructions.append(footer)
+
+				const inputs: HTMLInputElement[] = []
+				const update = () => {
+					steps.forEach((step, i) =>
+						step.classList.toggle("completed", inputs[i].checked),
+					)
+					progress.textContent = `PROGRESS: ${inputs.filter((input) => input.checked).length} / ${steps.length} STEPS DONE`
+				}
+
+				steps.forEach((step, i) => {
+					const content = document.createElement("div")
+					content.className = "step-content"
+					content.append(...step.childNodes)
+					const label = document.createElement("label")
+					label.className = "step-check"
+					const input = document.createElement("input")
+					input.type = "checkbox"
+					input.className = "sr-only"
+					input.setAttribute("aria-label", `Mark step ${i + 1} completed`)
+					const badge = document.createElement("span")
+					badge.className = "step-number"
+					badge.setAttribute("aria-hidden", "true")
+					badge.textContent = `[${i + 1}]`
+					label.append(input, badge)
+					step.append(label, content)
+					inputs.push(input)
+					input.addEventListener("change", update)
+					step.addEventListener("click", (event) => {
+						const target = event.target as Element
+						if (
+							target.closest(
+								"a, button, input, label, select, textarea, summary",
+							)
+						)
+							return
+						if (window.getSelection()?.toString()) return
+						input.checked = !input.checked
+						update()
+					})
+				})
+				reset.addEventListener("click", () => {
+					inputs.forEach((input) => {
+						input.checked = false
+					})
+					update()
+				})
+				update()
+			})
+	</script>
+</Layout>

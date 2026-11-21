@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro"
+import { getUniqueRecipes, recipeNumber, recipeUrl } from "../lib/recipes"
+const recipes = (await getUniqueRecipes()).sort((a, b) =>
+	a.data.title.localeCompare(b.data.title),
+)
+const tags = [
+	...new Set(recipes.flatMap(({ data }) => [data.category, ...data.tags])),
+].sort()
+---
+
+<Layout index>
+	<section aria-label="Find a recipe" class="filters no-print">
+		<label class="search">
+			<span aria-hidden="true">&gt;</span>
+			<span class="sr-only">Search recipes or ingredients</span>
+			<input
+				id="search"
+				type="search"
+				placeholder="search recipe or ingredient..."
+				autocomplete="off"
+			/>
+		</label>
+		<div class="tag-filters">
+			<span class="muted">TAGS:</span>
+			<button data-tag="" aria-pressed="true">
+				ALL
+			</button>
+			{tags.map((tag) => (
+				<button data-tag={tag} aria-pressed="false">
+					{tag}
+				</button>
+			))}
+		</div>
+	</section>
+	<div class="index-meta">
+		<span id="result-count" role="status">
+			{recipes.length} RECIPES
+		</span>
+		<div class="layout-controls no-print" aria-label="Index view">
+			<span class="muted">VIEW:</span>
+			<button data-layout="grid" aria-pressed="false">
+				[Grid]
+			</button>
+			<button data-layout="compact" aria-pressed="true">
+				[Compact Text]
+			</button>
+		</div>
+	</div>
+	<div id="recipe-index" class="recipe-index" data-layout="compact">
+		{recipes.map(({ id, data, body }) => (
+			<article
+				class="recipe-card"
+				data-search={`${data.title} ${data.category} ${data.tags.join(" ")} ${body}`.toLowerCase()}
+				data-tags={JSON.stringify([data.category, ...data.tags])}
+			>
+				<a href={recipeUrl(id)}>
+					<div class="card-top">
+						<span>[REC-{recipeNumber(data.number)}]</span>
+						<span>{data.time}</span>
+					</div>
+					<h2>{data.title}</h2>
+					{data.description && (
+						<p class="card-description">{data.description}</p>
+					)}
+					<div class="card-tags">
+						{[data.category, ...data.tags].map((tag) => (
+							<span>{tag}</span>
+						))}
+					</div>
+					<div class="card-bottom">
+						<span>{data.size ?? "Yield not specified"}</span>
+						<span class="read-recipe">VIEW RECIPE ↗</span>
+					</div>
+				</a>
+			</article>
+		))}
+	</div>
+	<div id="no-results" hidden>
+		<h2>[!] No recipes match your search</h2>
+		<p>Try another ingredient or clear your filters.</p>
+		<button id="reset-filters">[RESET FILTERS]</button>
+	</div>
+	<script src="../scripts/index.ts"></script>
+</Layout>
