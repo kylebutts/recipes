@@ -23,11 +23,23 @@ const themes = ["magenta", "blue", "green", "purple"]
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
 		<title>{title}</title>
-		<link rel="icon" href={`${home}favicon.png`} />
+		<link
+			id="dynamic-favicon"
+			rel="icon"
+			type="image/png"
+			data-base={`${home}favicon/`}
+			href={`${home}favicon/favicon_kyle-magenta.png`}
+		/>
 		<script is:inline>
 			try {
 				const theme = localStorage.getItem("recipe-theme")
-				if (theme) document.documentElement.dataset.theme = theme
+				if (theme) {
+					document.documentElement.dataset.theme = theme
+					const favicon = document.getElementById("dynamic-favicon")
+					if (favicon)
+						favicon.href =
+							favicon.dataset.base + "favicon_kyle-" + theme + ".png"
+				}
 			} catch {
 				/* Storage is optional. */
 			}
@@ -74,8 +86,16 @@ const themes = ["magenta", "blue", "green", "purple"]
 			const swatches = [
 				...document.querySelectorAll<HTMLButtonElement>(".theme-swatch"),
 			]
+			const favicon = document.getElementById("dynamic-favicon")
+			function setFavicon(theme: string) {
+				favicon?.setAttribute(
+					"href",
+					`${favicon.dataset.base}favicon_kyle-${theme}.png`,
+				)
+			}
 			function setTheme(theme: string) {
 				document.documentElement.dataset.theme = theme
+				setFavicon(theme)
 				swatches.forEach((swatch) =>
 					swatch.setAttribute(
 						"aria-pressed",

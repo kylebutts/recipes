@@ -1,11 +1,17 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Recipes to share with my friends."><title>Kyle Butts&#39; Cookbook</title><link rel="icon" href="/favicon.png"><script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Recipes to share with my friends."><title>Kyle Butts&#39; Cookbook</title><link id="dynamic-favicon" rel="icon" type="image/png" data-base="/recipes/favicon/" href="/recipes/favicon/favicon_kyle-magenta.png"><script>
 			try {
 				const theme = localStorage.getItem("recipe-theme")
-				if (theme) document.documentElement.dataset.theme = theme
+				if (theme) {
+					document.documentElement.dataset.theme = theme
+					const favicon = document.getElementById("dynamic-favicon")
+					if (favicon)
+						favicon.href =
+							favicon.dataset.base + "favicon_kyle-" + theme + ".png"
+				}
 			} catch {
 				/* Storage is optional. */
 			}
-		</script><link rel="stylesheet" href="/_astro/Layout.D8gamcMq.css"></head><body><a href="#main" class="skip-link">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/">Kyle's cookbook<span class="cursor">_</span></a><div class="header-actions"><!-- {!index && (
+		</script><link rel="stylesheet" href="/recipes/_astro/Layout.DjpAcRRl.css"></head><body><a href="#main" class="skip-link">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/recipes/">Kyle's cookbook<span class="cursor">_</span></a><div class="header-actions"><!-- {!index && (
 						<a class="header-link" href={home}>
 							[RECIPE INDEX]
 						</a>
@@ -75,7 +81,7 @@ top with crispy prosciutto and fresh herbs. serve with crusty bread for mopping 
 
 </section>
 
-</div>" data-tags="[&quot;Dinner&quot;]"><a href="/apple_cider_smothered_chicken.html"><div class="card-top"><span>[REC-012]</span><span>40 minutes</span></div><h2>Apple Cider Smothered Chicken</h2><p class="card-description">A cozy one-pot meal with chicken seared in browned butter, smothered in a creamy apple cider pan sauce with caramelized onions and melted Gruyère.</p><div class="card-tags"><span>Dinner</span></div><div class="card-bottom"><span>6 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="basque burnt cheescake baking vegetarian sweet <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Dinner&quot;]"><a href="/recipes/apple_cider_smothered_chicken.html"><div class="card-top"><span>[REC-012]</span><span>40 minutes</span></div><h2>Apple Cider Smothered Chicken</h2><p class="card-description">A cozy one-pot meal with chicken seared in browned butter, smothered in a creamy apple cider pan sauce with caramelized onions and melted Gruyère.</p><div class="card-tags"><span>Dinner</span></div><div class="card-bottom"><span>6 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="basque burnt cheescake baking vegetarian sweet <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -146,7 +152,7 @@ let cool slightly (it will fall drastically as it cools), then unmold. let cool 
 
 </section>
 
-</div>" data-tags="[&quot;Baking&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/basque_burnt_cheesecake.html"><div class="card-top"><span>[REC-005]</span><span>1.5 hour</span></div><h2>Basque Burnt Cheescake</h2><div class="card-tags"><span>Baking</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>1 10&quot; Cake</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="cheese buldak korean food favorite spicy <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Baking&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/recipes/basque_burnt_cheesecake.html"><div class="card-top"><span>[REC-005]</span><span>1.5 hour</span></div><h2>Basque Burnt Cheescake</h2><div class="card-tags"><span>Baking</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>1 10&quot; Cake</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="cheese buldak korean food favorite spicy <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -212,7 +218,7 @@ garnish with the spring onion slices and serve.
 
 </section>
 
-</div>" data-tags="[&quot;Korean Food&quot;,&quot;Favorite&quot;,&quot;Spicy&quot;]"><a href="/cheese_buldak.html"><div class="card-top"><span>[REC-003]</span><span>1 hour</span></div><h2>Cheese Buldak</h2><p class="card-description">Super-spicy chicken tempered with loads of cheese and fresh spring onions. Serve with rice and a light salad – or, better yet, an assortment of side dishes.</p><div class="card-tags"><span>Korean Food</span><span>Favorite</span><span>Spicy</span></div><div class="card-bottom"><span>2-3 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="grilled chicken banh mi vietnamese food favorite <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Korean Food&quot;,&quot;Favorite&quot;,&quot;Spicy&quot;]"><a href="/recipes/cheese_buldak.html"><div class="card-top"><span>[REC-003]</span><span>1 hour</span></div><h2>Cheese Buldak</h2><p class="card-description">Super-spicy chicken tempered with loads of cheese and fresh spring onions. Serve with rice and a light salad – or, better yet, an assortment of side dishes.</p><div class="card-tags"><span>Korean Food</span><span>Favorite</span><span>Spicy</span></div><div class="card-bottom"><span>2-3 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="grilled chicken banh mi vietnamese food favorite <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -290,7 +296,7 @@ for the sriracha mayo, whisk together the mayo, sriracha chili sauce, lemon juic
 
 </section>
 
-</div>" data-tags="[&quot;Vietnamese Food&quot;,&quot;Favorite&quot;]"><a href="/banh_mi.html"><div class="card-top"><span>[REC-011]</span><span>1.5 hour</span></div><h2>Grilled Chicken Banh Mi</h2><div class="card-tags"><span>Vietnamese Food</span><span>Favorite</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="grilled chicken skewers with tarragon and yogurt mediterranean food  <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Vietnamese Food&quot;,&quot;Favorite&quot;]"><a href="/recipes/banh_mi.html"><div class="card-top"><span>[REC-011]</span><span>1.5 hour</span></div><h2>Grilled Chicken Banh Mi</h2><div class="card-tags"><span>Vietnamese Food</span><span>Favorite</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="grilled chicken skewers with tarragon and yogurt mediterranean food  <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -385,7 +391,7 @@ grill the pitas until marked, about 1 minute, turning halfway through. lay them 
 
 </section>
 
-</div>" data-tags="[&quot;Mediterranean Food&quot;]"><a href="/chicken_skewers.html"><div class="card-top"><span>[REC-009]</span><span>1 hour + marinade</span></div><h2>Grilled Chicken Skewers With Tarragon and Yogurt</h2><div class="card-tags"><span>Mediterranean Food</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="japanese milk bread rolls baking  <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Mediterranean Food&quot;]"><a href="/recipes/chicken_skewers.html"><div class="card-top"><span>[REC-009]</span><span>1 hour + marinade</span></div><h2>Grilled Chicken Skewers With Tarragon and Yogurt</h2><div class="card-tags"><span>Mediterranean Food</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="japanese milk bread rolls baking  <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -492,7 +498,7 @@ store leftover milk bread rolls in an airtight container at room temperature for
 
 </section>
 
-</div>" data-tags="[&quot;Baking&quot;]"><a href="/japanese_milk_bread_rolls.html"><div class="card-top"><span>[REC-013]</span><span>3 hrs 57 mins</span></div><h2>Japanese Milk Bread Rolls</h2><p class="card-description">Slightly sweet, incredibly soft and airy rolls made with a tangzhong roux that keeps them tender and moist for days.</p><div class="card-tags"><span>Baking</span></div><div class="card-bottom"><span>8 to 10 rolls</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="joshua weisman's chocolate chip cookies baking favorite vegetarian sweet <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Baking&quot;]"><a href="/recipes/japanese_milk_bread_rolls.html"><div class="card-top"><span>[REC-013]</span><span>3 hrs 57 mins</span></div><h2>Japanese Milk Bread Rolls</h2><p class="card-description">Slightly sweet, incredibly soft and airy rolls made with a tangzhong roux that keeps them tender and moist for days.</p><div class="card-tags"><span>Baking</span></div><div class="card-bottom"><span>8 to 10 rolls</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="joshua weisman's chocolate chip cookies baking favorite vegetarian sweet <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -572,7 +578,7 @@ for *large—* bake for 12-15 minutes; for *small—* bake for 8-10 minutes. pan
 
 </section>
 
-</div>" data-tags="[&quot;Baking&quot;,&quot;Favorite&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/weisman_cookies.html"><div class="card-top"><span>[REC-007]</span><span>2 hours</span></div><h2>Joshua Weisman&#39;s Chocolate Chip Cookies</h2><div class="card-tags"><span>Baking</span><span>Favorite</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>18 cookies</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="karaage (japenese fried chicken) japanese food favorite <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Baking&quot;,&quot;Favorite&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/recipes/weisman_cookies.html"><div class="card-top"><span>[REC-007]</span><span>2 hours</span></div><h2>Joshua Weisman&#39;s Chocolate Chip Cookies</h2><div class="card-tags"><span>Baking</span><span>Favorite</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>18 cookies</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="karaage (japenese fried chicken) japanese food favorite <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -672,7 +678,7 @@ chicken on the left is after the 1st frying and one on the right is after the 2n
 
 </section>
 
-</div>" data-tags="[&quot;Japanese Food&quot;,&quot;Favorite&quot;]"><a href="/karaage.html"><div class="card-top"><span>[REC-010]</span><span>1 hour</span></div><h2>Karaage (Japenese Fried Chicken)</h2><div class="card-tags"><span>Japanese Food</span><span>Favorite</span></div><div class="card-bottom"><span>4-5 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="korean braised chicken thigh korean food spicy <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Japanese Food&quot;,&quot;Favorite&quot;]"><a href="/recipes/karaage.html"><div class="card-top"><span>[REC-010]</span><span>1 hour</span></div><h2>Karaage (Japenese Fried Chicken)</h2><div class="card-tags"><span>Japanese Food</span><span>Favorite</span></div><div class="card-bottom"><span>4-5 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="korean braised chicken thigh korean food spicy <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -749,7 +755,7 @@ serve, garnished with sesame seeds and thinly sliced scallion and cooked brown r
 
 </section>
 
-</div>" data-tags="[&quot;Korean Food&quot;,&quot;Spicy&quot;]"><a href="/korean_braised_chicken_thigh.html"><div class="card-top"><span>[REC-008]</span><span>1 hour</span></div><h2>Korean Braised Chicken Thigh</h2><div class="card-tags"><span>Korean Food</span><span>Spicy</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="milk bar's chocolate chip cookies baking vegetarian sweet <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Korean Food&quot;,&quot;Spicy&quot;]"><a href="/recipes/korean_braised_chicken_thigh.html"><div class="card-top"><span>[REC-008]</span><span>1 hour</span></div><h2>Korean Braised Chicken Thigh</h2><div class="card-tags"><span>Korean Food</span><span>Spicy</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="milk bar's chocolate chip cookies baking vegetarian sweet <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -869,7 +875,7 @@ take this process seriously. magic doesn’t just bake itself in an oven. you ca
 
 </section>
 
-</div>" data-tags="[&quot;Baking&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/milk_bar_cookies.html"><div class="card-top"><span>[REC-002]</span><span>2 hours</span></div><h2>Milk Bar&#39;s Chocolate Chip Cookies</h2><div class="card-tags"><span>Baking</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>18 cookies</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="morning maple muffins baking favorite vegetarian sweet <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Baking&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/recipes/milk_bar_cookies.html"><div class="card-top"><span>[REC-002]</span><span>2 hours</span></div><h2>Milk Bar&#39;s Chocolate Chip Cookies</h2><div class="card-tags"><span>Baking</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>18 cookies</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="morning maple muffins baking favorite vegetarian sweet <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -948,7 +954,7 @@ bake 16-20 minutes or until a toothpick inserted in center comes out clean. cool
 
 </section>
 
-</div>" data-tags="[&quot;Baking&quot;,&quot;Favorite&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/maple_muffins.html"><div class="card-top"><span>[REC-001]</span><span>30 mins.</span></div><h2>Morning Maple Muffins</h2><div class="card-tags"><span>Baking</span><span>Favorite</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>16 muffins</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="slow cooker carnitas hispanic food  <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Baking&quot;,&quot;Favorite&quot;,&quot;Vegetarian&quot;,&quot;Sweet&quot;]"><a href="/recipes/maple_muffins.html"><div class="card-top"><span>[REC-001]</span><span>30 mins.</span></div><h2>Morning Maple Muffins</h2><div class="card-tags"><span>Baking</span><span>Favorite</span><span>Vegetarian</span><span>Sweet</span></div><div class="card-bottom"><span>16 muffins</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="slow cooker carnitas hispanic food  <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -997,7 +1003,7 @@ preheat oven to broil. place carnitas onto a baking sheet and broil until crisp 
 
 </section>
 
-</div>" data-tags="[&quot;Hispanic Food&quot;]"><a href="/carnitas.html"><div class="card-top"><span>[REC-004]</span><span>9 hours</span></div><h2>Slow Cooker Carnitas</h2><div class="card-tags"><span>Hispanic Food</span></div><div class="card-bottom"><span>8</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="soy braised short ribs dinner favorite <div classname=&quot;recipe-columns&quot;>
+</div>" data-tags="[&quot;Hispanic Food&quot;]"><a href="/recipes/carnitas.html"><div class="card-top"><span>[REC-004]</span><span>9 hours</span></div><h2>Slow Cooker Carnitas</h2><div class="card-tags"><span>Hispanic Food</span></div><div class="card-bottom"><span>8</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article><article class="recipe-card" data-search="soy braised short ribs dinner favorite <div classname=&quot;recipe-columns&quot;>
 
 <section classname=&quot;ingredients&quot;>
 
@@ -1071,4 +1077,4 @@ place with some rice, some broccolini, a piece of the meat with some of the sauc
 
 </section>
 
-</div>" data-tags="[&quot;Dinner&quot;,&quot;Favorite&quot;]"><a href="/soy_braised_short_ribs.html"><div class="card-top"><span>[REC-006]</span><span>3 hours</span></div><h2>Soy Braised Short Ribs</h2><div class="card-tags"><span>Dinner</span><span>Favorite</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article></div><div id="no-results" hidden><h2>[!] No recipes match your search</h2><p>Try another ingredient or clear your filters.</p><button id="reset-filters">[RESET FILTERS]</button></div><script type="module">var e=document.querySelector(`#recipe-index`),t=document.querySelector(`#search`),n=[...document.querySelectorAll(`.recipe-card`)],r=[...document.querySelectorAll(`[data-tag]`)],i=``;function a(){let e=t.value.toLowerCase().trim().split(/\s+/).filter(Boolean),a=0;for(let t of n){let n=e.every(e=>t.dataset.search.includes(e))&&(!i||JSON.parse(t.dataset.tags).includes(i));t.hidden=!n,n&&a++}document.querySelector(`#result-count`).textContent=`${a} ${a===1?`RECIPE`:`RECIPES`}`,document.querySelector(`#no-results`).hidden=a>0,r.forEach(e=>e.setAttribute(`aria-pressed`,String(e.dataset.tag===i)))}t.addEventListener(`input`,a),r.forEach(e=>e.addEventListener(`click`,()=>{i=e.dataset.tag,a()})),document.querySelector(`#reset-filters`).addEventListener(`click`,()=>{t.value=``,i=``,a(),t.focus()});var o=[...document.querySelectorAll(`button[data-layout]`)];function s(t){e.dataset.layout=t===`compact`?`compact`:`grid`,o.forEach(t=>t.setAttribute(`aria-pressed`,String(t.dataset.layout===e.dataset.layout)))}try{s(localStorage.getItem(`recipe-layout`)??`compact`)}catch{}o.forEach(e=>e.addEventListener(`click`,()=>{s(e.dataset.layout);try{localStorage.setItem(`recipe-layout`,e.dataset.layout)}catch{}}));</script></main><script type="module">var e=[...document.querySelectorAll(`.theme-swatch`)];function t(t){document.documentElement.dataset.theme=t,e.forEach(e=>e.setAttribute(`aria-pressed`,String(e.dataset.themeColor===t)))}var n=null;try{n=localStorage.getItem(`recipe-theme`)}catch{}t(n??document.documentElement.dataset.theme??`magenta`),e.forEach(e=>e.addEventListener(`click`,()=>{let n=e.dataset.themeColor;t(n);try{localStorage.setItem(`recipe-theme`,n)}catch{}}));</script></body></html>
+</div>" data-tags="[&quot;Dinner&quot;,&quot;Favorite&quot;]"><a href="/recipes/soy_braised_short_ribs.html"><div class="card-top"><span>[REC-006]</span><span>3 hours</span></div><h2>Soy Braised Short Ribs</h2><div class="card-tags"><span>Dinner</span><span>Favorite</span></div><div class="card-bottom"><span>4 servings</span><span class="read-recipe">VIEW RECIPE ↗</span></div></a></article></div><div id="no-results" hidden><h2>[!] No recipes match your search</h2><p>Try another ingredient or clear your filters.</p><button id="reset-filters">[RESET FILTERS]</button></div><script type="module">var e=document.querySelector(`#recipe-index`),t=document.querySelector(`#search`),n=[...document.querySelectorAll(`.recipe-card`)],r=[...document.querySelectorAll(`[data-tag]`)],i=``;function a(){let e=t.value.toLowerCase().trim().split(/\s+/).filter(Boolean),a=0;for(let t of n){let n=e.every(e=>t.dataset.search.includes(e))&&(!i||JSON.parse(t.dataset.tags).includes(i));t.hidden=!n,n&&a++}document.querySelector(`#result-count`).textContent=`${a} ${a===1?`RECIPE`:`RECIPES`}`,document.querySelector(`#no-results`).hidden=a>0,r.forEach(e=>e.setAttribute(`aria-pressed`,String(e.dataset.tag===i)))}t.addEventListener(`input`,a),r.forEach(e=>e.addEventListener(`click`,()=>{i=e.dataset.tag,a()})),document.querySelector(`#reset-filters`).addEventListener(`click`,()=>{t.value=``,i=``,a(),t.focus()});var o=[...document.querySelectorAll(`button[data-layout]`)];function s(t){e.dataset.layout=t===`compact`?`compact`:`grid`,o.forEach(t=>t.setAttribute(`aria-pressed`,String(t.dataset.layout===e.dataset.layout)))}try{s(localStorage.getItem(`recipe-layout`)??`compact`)}catch{}o.forEach(e=>e.addEventListener(`click`,()=>{s(e.dataset.layout);try{localStorage.setItem(`recipe-layout`,e.dataset.layout)}catch{}}));</script></main><script type="module">var e=[...document.querySelectorAll(`.theme-swatch`)],t=document.getElementById(`dynamic-favicon`);function n(e){t?.setAttribute(`href`,`${t.dataset.base}favicon_kyle-${e}.png`)}function r(t){document.documentElement.dataset.theme=t,n(t),e.forEach(e=>e.setAttribute(`aria-pressed`,String(e.dataset.themeColor===t)))}var i=null;try{i=localStorage.getItem(`recipe-theme`)}catch{}r(i??document.documentElement.dataset.theme??`magenta`),e.forEach(e=>e.addEventListener(`click`,()=>{let t=e.dataset.themeColor;r(t);try{localStorage.setItem(`recipe-theme`,t)}catch{}}));</script></body></html>
