@@ -61,7 +61,7 @@ Heat the oil in a pan.
 </div>
 ```
 
-`number` is required and becomes the recipe's permanent label, shown as `REC-019` on the index and recipe page. It also creates a short URL: `/recipes/019.html` redirects to the recipe. Numbers are assigned in the order recipes were added: give each new recipe the next unused number. Numbers must be unique, since the build fails on duplicates. The index still sorts A–Z by title, so numbers do not affect display order. Optional frontmatter includes `author`, `source` (a full URL), `image` (a filename in `public/images/`), and `original_title`. Categories and tags automatically appear in the index filters. Search includes the full recipe text. Each `recipe-step` gets a completion checkbox when JavaScript is enabled.
+`number` is required and becomes the recipe's permanent label, shown as `REC-019` on the index and recipe page. It also creates a short URL: `/recipes/019.html` redirects to the recipe. Numbers are assigned in the order recipes were added: give each new recipe the next unused number. Numbers must be unique, since the build fails on duplicates. The index still sorts A–Z by title, so numbers do not affect display order. Optional frontmatter includes `author`, `website`, `source` (a full URL), and `original_title`. Categories and tags automatically appear in the index filters. Search includes the full recipe text. Each `recipe-step` gets a completion checkbox when JavaScript is enabled.
 
 All 16 original recipes retain their ingredients, instructions, attribution, and available photos. Recipe content and navigation work without JavaScript; search, layout switching, copy, and checkboxes use small client scripts. Compact text is the default; the grid/compact preference is saved in the browser.
 

@@ -10,6 +10,16 @@ export async function getStaticPaths() {
 const { recipe } = Astro.props
 const { data } = recipe
 const { Content } = await render(recipe)
+const website =
+	data.website?.trim() ||
+	(data.source
+		? new URL(data.source).hostname.replace(/^www\./, "")
+		: "")
+const author = data.author?.trim() ?? ""
+const sourceLabel =
+	author && website && author !== website
+		? `${author} ⋅ ${website}`
+		: website || author || "Original recipe"
 ---
 
 <Layout
@@ -29,8 +39,15 @@ const { Content } = await render(recipe)
 		<header class="recipe-heading">
 			<div>
 				<h1>{data.title}</h1>
-				{data.original_title && <p>{data.original_title}</p>}
+				{data.original_title && (
+					<p class="original-title">{data.original_title}</p>
+				)}
 				{data.description && <p class="description">{data.description}</p>}
+				{data.source && (
+					<p class="source">
+						<a href={data.source}>{sourceLabel} ↗</a>
+					</p>
+				)}
 			</div>
 			<dl class="recipe-facts">
 				<div>
@@ -44,24 +61,164 @@ const { Content } = await render(recipe)
 			</dl>
 		</header>
 		<Content />
-		{data.image && (
-			<details class="recipe-photo no-print">
-				<summary>[VIEW RECIPE PHOTO]</summary>
-				<img
-					src={`${import.meta.env.BASE_URL}images/${data.image}`}
-					alt={data.title}
-					loading="lazy"
-				/>
-			</details>
-		)}
-		{data.source && (
-			<p class="source">
-				Source: <a href={data.source}>{data.author || "Original recipe"} ↗</a>
-			</p>
-		)}
 	</article>
 	<p id="copy-status" role="status" class="no-print"></p>
 	<script>
+		function inlineMarkdown(node: Node): string {
+			if (node.nodeType === Node.TEXT_NODE) return node.textContent ?? ""
+			if (!(node instanceof HTMLElement)) return ""
+			const content = [...node.childNodes].map(inlineMarkdown).join("")
+			const label = content.replace(/\s+/g, " ").trim()
+			switch (node.tagName) {
+				case "BR":
+					return " "
+				case "CODE":
+					return label
+				case "A": {
+					const href = node.getAttribute("href")
+					return href ? `[${label}](${href})` : label
+				}
+				case "STRONG":
+				case "B":
+					return label ? `**${label}**` : ""
+				case "EM":
+				case "I":
+					return label ? `*${label}*` : ""
+				default:
+					return content
+			}
+		}
+		function lineText(node: Node | null): string {
+			if (!node) return ""
+			return inlineMarkdown(node).replace(/\s+/g, " ").trim()
+		}
+		function headingText(node: Element | null): string {
+			return lineText(node).replace(/^\[[^\]]*\]\s*/, "")
+		}
+		function listLines(list: Element): string[] {
+			return [...list.querySelectorAll(":scope > li")].map((item) =>
+				lineText(item),
+			)
+		}
+		function recipeMarkdown(recipe: HTMLElement): string {
+			const blocks: string[] = []
+			const heading = recipe.querySelector(".recipe-heading")
+
+			const titleLines: string[] = []
+			const title = heading?.querySelector("h1")
+			if (title) titleLines.push(`# ${lineText(title)}`)
+			const original = heading?.querySelector(".original-title")
+			if (original) titleLines.push(lineText(original))
+			const description = heading?.querySelector(".description")
+			if (description) titleLines.push(lineText(description))
+			if (titleLines.length) blocks.push(titleLines.join("\n"))
+
+			const facts = [...(heading?.querySelectorAll(".recipe-facts > div") ?? [])]
+				.map((row) => ({
+					label: lineText(row.querySelector("dt")),
+					value: lineText(row.querySelector("dd")),
+				}))
+				.filter((fact) => fact.label)
+			if (facts.length) {
+				const width = Math.max(...facts.map((fact) => fact.label.length))
+				blocks.push(
+					facts
+						.map(
+							(fact) =>
+								`${fact.label}:${" ".repeat(width - fact.label.length + 1)}${fact.value}`,
+						)
+						.join("\n"),
+				)
+			}
+
+			const ingredients = recipe.querySelector(".ingredients")
+			if (ingredients) {
+				const lines: string[] = []
+				let headings = 0
+				for (const child of [...ingredients.children]) {
+					if (child.tagName === "H2") {
+						const level = headings++ === 0 ? "##" : "###"
+						lines.push(`${level} ${headingText(child)}`)
+					} else if (["UL", "OL"].includes(child.tagName)) {
+						lines.push(...listLines(child).map((item) => `- ${item}`))
+					} else if (child.tagName === "BLOCKQUOTE") {
+						lines.push(`> ${lineText(child)}`)
+					} else if (child.tagName === "P") {
+						lines.push(lineText(child))
+					}
+				}
+				if (lines.length) blocks.push(lines.join("\n"))
+			}
+
+			const instructions = recipe.querySelector(".instructions")
+			if (instructions) {
+				const parts: string[] = []
+				const sectionHeading = instructions.querySelector("h2")
+				if (sectionHeading)
+					parts.push(`## ${headingText(sectionHeading).toUpperCase()}`)
+				const steps = [
+					...instructions.querySelectorAll<HTMLElement>(".recipe-step"),
+				]
+				steps.forEach((step, index) => {
+					const number =
+						step.querySelector(".step-number")?.textContent?.trim() ||
+						`[${index + 1}]`
+					const chunks: string[] = []
+					for (const child of [...step.children]) {
+						if (
+							child.classList.contains("step-content") ||
+							child.tagName === "DIV"
+						) {
+							for (const block of [...child.children]) {
+								if (["UL", "OL"].includes(block.tagName)) {
+									const items = listLines(block)
+									if (items.length) chunks.push(items.join("\n"))
+								} else if (/^H[1-6]$/.test(block.tagName)) {
+									chunks.push(`**${lineText(block)}**`)
+								} else if (block.tagName === "BLOCKQUOTE") {
+									chunks.push(`> ${lineText(block)}`)
+								} else {
+									const text = lineText(block)
+									if (text) chunks.push(text)
+								}
+							}
+						}
+					}
+					parts.push([number, ...chunks].join("\n"))
+				})
+				if (parts.length) blocks.push(parts.join("\n\n"))
+			}
+
+			const thoughts = recipe.querySelector(".thoughts")
+			if (thoughts) {
+				const lines: string[] = []
+				for (const child of [...thoughts.children]) {
+					if (child.tagName === "H2") {
+						lines.push(`## ${headingText(child)}`)
+					} else if (child.tagName === "H3") {
+						lines.push(`### ${headingText(child)}`)
+					} else if (["UL", "OL"].includes(child.tagName)) {
+						lines.push(...listLines(child).map((item) => `- ${item}`))
+					} else if (child.tagName === "P") {
+						const text = lineText(child)
+						if (text) lines.push(text)
+					}
+				}
+				if (lines.length) blocks.push(lines.join("\n\n"))
+			}
+
+			const source = recipe.querySelector(".source")
+			if (source) {
+				const link = source.querySelector("a")
+				const attribution = link
+					? lineText(link)
+					: lineText(source).replace(/^source:\s*/i, "")
+				if (attribution) blocks.push(`Source: ${attribution}`)
+			}
+
+			return `${blocks.join("\n\n")}\n`
+		}
+
 		document
 			.querySelector("#print")
 			?.addEventListener("click", () => window.print())
@@ -69,7 +226,7 @@ const { Content } = await render(recipe)
 			const status = document.querySelector("#copy-status")!
 			try {
 				await navigator.clipboard.writeText(
-					document.querySelector<HTMLElement>("#recipe")!.innerText,
+					recipeMarkdown(document.querySelector<HTMLElement>("#recipe")!),
 				)
 				status.textContent = "Recipe copied."
 			} catch {
@@ -91,7 +248,7 @@ const { Content } = await render(recipe)
 					header.className = "instructions-header"
 					const hint = document.createElement("span")
 					hint.className = "instructions-hint no-print"
-					hint.textContent = "Click step to mark completed"
+					hint.textContent = "Click the step number to mark completed"
 					heading.before(header)
 					header.append(heading, hint)
 				}
@@ -104,14 +261,22 @@ const { Content } = await render(recipe)
 				reset.type = "button"
 				reset.textContent = "[RESET CHECKLIST]"
 				footer.append(progress, reset)
-				instructions.append(footer)
+				const notes = instructions.querySelector(":scope > .thoughts")
+				if (notes) instructions.insertBefore(footer, notes)
+				else instructions.append(footer)
 
 				const inputs: HTMLInputElement[] = []
+				const badges: HTMLElement[] = []
 				const update = () => {
+					const done = inputs.filter((input) => input.checked).length
 					steps.forEach((step, i) =>
 						step.classList.toggle("completed", inputs[i].checked),
 					)
-					progress.textContent = `PROGRESS: ${inputs.filter((input) => input.checked).length} / ${steps.length} STEPS DONE`
+					badges.forEach((badge, i) => {
+						badge.textContent = inputs[i].checked ? "[x]" : `[${i + 1}]`
+					})
+					progress.textContent = `PROGRESS: ${done} / ${steps.length} STEPS DONE`
+					reset.hidden = done === 0
 				}
 
 				steps.forEach((step, i) => {
@@ -127,23 +292,13 @@ const { Content } = await render(recipe)
 					const badge = document.createElement("span")
 					badge.className = "step-number"
 					badge.setAttribute("aria-hidden", "true")
+					badge.dataset.step = String(i + 1)
 					badge.textContent = `[${i + 1}]`
 					label.append(input, badge)
 					step.append(label, content)
 					inputs.push(input)
+					badges.push(badge)
 					input.addEventListener("change", update)
-					step.addEventListener("click", (event) => {
-						const target = event.target as Element
-						if (
-							target.closest(
-								"a, button, input, label, select, textarea, summary",
-							)
-						)
-							return
-						if (window.getSelection()?.toString()) return
-						input.checked = !input.checked
-						update()
-					})
 				})
 				reset.addEventListener("click", () => {
 					inputs.forEach((input) => {
@@ -152,6 +307,58 @@ const { Content } = await render(recipe)
 					update()
 				})
 				update()
+			})
+
+		document
+			.querySelectorAll<HTMLElement>(".ingredients")
+			.forEach((ingredients) => {
+				const items = [...ingredients.querySelectorAll<HTMLElement>("li")]
+				if (!items.length) return
+
+				const footer = document.createElement("div")
+				footer.className = "ingredients-footer no-print"
+				footer.hidden = true
+				const reset = document.createElement("button")
+				reset.type = "button"
+				reset.textContent = "[RESET INGREDIENTS]"
+				footer.append(reset)
+				ingredients.append(footer)
+
+				const update = () => {
+					footer.hidden = !items.some((item) =>
+						item.classList.contains("checked"),
+					)
+				}
+				const toggle = (item: HTMLElement) => {
+					item.classList.toggle("checked")
+					item.setAttribute(
+						"aria-pressed",
+						String(item.classList.contains("checked")),
+					)
+					update()
+				}
+
+				items.forEach((item) => {
+					item.tabIndex = 0
+					item.setAttribute("role", "button")
+					item.setAttribute("aria-pressed", "false")
+					item.addEventListener("click", () => {
+						if (window.getSelection()?.toString()) return
+						toggle(item)
+					})
+					item.addEventListener("keydown", (event) => {
+						if (event.key !== "Enter" && event.key !== " ") return
+						event.preventDefault()
+						toggle(item)
+					})
+				})
+				reset.addEventListener("click", () => {
+					items.forEach((item) => {
+						item.classList.remove("checked")
+						item.setAttribute("aria-pressed", "false")
+					})
+					update()
+				})
 			})
 	</script>
 </Layout>
